@@ -1,4 +1,4 @@
-package com.wanying.study.thread;
+package com.wanying.study.thread.lock;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -13,14 +13,15 @@ public class SpinLockDemo {
 
     public void lock(){
         Thread currentThread = Thread.currentThread();
-        while(owner.compareAndSet(null,currentThread)){
+        //没有获取锁就不断轮询
+        while(!owner.compareAndSet(null,currentThread)){
             System.out.println("lock name "+currentThread.getName());
+
         }
     }
 
-    public void unlock(){
+    public void unLock(){
         Thread currentThread = Thread.currentThread();
-        System.out.println("unlock name "+currentThread.getName());
         owner.compareAndSet(currentThread,null);
     }
 
@@ -37,7 +38,7 @@ public class SpinLockDemo {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    lockDemo.unlock();
+                    lockDemo.unLock();
 
                 }
             });
