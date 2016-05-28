@@ -21,8 +21,13 @@ public class FastTableTest {
 	private static int capcatity = 10000000;
 
 	public static void main(String args[]) {
-//		addString();
+		addString();
 		addSource();
+		try {
+			Thread.sleep(100000l);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 	
