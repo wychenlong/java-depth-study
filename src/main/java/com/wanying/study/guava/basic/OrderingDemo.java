@@ -40,6 +40,14 @@ public class OrderingDemo {
         System.out.println("leastOf："+Ordering.natural().leastOf(numberList,3));
 
 //        复杂对象排序支持
+        orergingObject();
+
+    }
+
+    /**
+     * 针对对象其中单个字段进行排序
+     */
+    private static void orergingObject() {
         Random random = new Random();
         List<Foo> fooList = Lists.newArrayList();
         for(int i = 0 ; i < 5 ;i++){
@@ -55,6 +63,5 @@ public class OrderingDemo {
             }
         }).nullsFirst();
         System.out.println("对象字段排序：" +orderingFoo.sortedCopy(fooList));
-
     }
 }
