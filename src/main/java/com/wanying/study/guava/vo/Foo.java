@@ -1,4 +1,4 @@
-package com.wanying.study.guava.basic.vo;
+package com.wanying.study.guava.vo;
 
 /**
  * Created by wychenlong on 2016/7/13.

@@ -3,7 +3,7 @@ package com.wanying.study.guava.basic;
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Ordering;
-import com.wanying.study.guava.basic.vo.Foo;
+import com.wanying.study.guava.vo.Foo;
 
 import java.util.*;
 
