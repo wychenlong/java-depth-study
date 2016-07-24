@@ -1,4 +1,4 @@
-package com.wanying.study.collections;
+package com.wanying.study.javolution;
 
 import javax.swing.*;
 import java.awt.*;

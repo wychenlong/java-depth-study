@@ -1,4 +1,4 @@
-package com.wanying.study.collections;
+package com.wanying.study.javolution;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Executor;

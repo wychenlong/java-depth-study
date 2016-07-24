@@ -1,4 +1,4 @@
-package com.wanying.study.collections;
+package com.wanying.study.javolution;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * 
  * <b>项目名称</b>： java-depth-study <br>
- * <b>包名称</b>： com.wanying.study.collections.list <br>
+ * <b>包名称</b>： com.wanying.study.javolution.list <br>
  * <b>类名称</b>： ListTest.java <br>
  * <b>类描述</b>： <br>
  * <b>创建人</b>：wychenlong <br>
