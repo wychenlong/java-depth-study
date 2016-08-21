@@ -9,6 +9,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.*;
 
+import static org.osgi.util.measurement.Unit.V;
+
 /**
  * Created by wychenlong on 2016/8/18.
  */
@@ -20,11 +22,9 @@ public class ListenableFutureDemo {
         final ListenableFuture<String> future = executor.submit(asyncExecCallable1);
         final ListenableFuture<String> future2 = executor.submit(listenableFutureDemo.new AsyncExecCallable(21,"test2"));
 
-        ListenableFuture<?> g=  executor.submit(listenableFutureDemo.new AsyncExecFuture(asyncExecCallable1));
-        Futures.addCallback(g, listenableFutureDemo.new FutureCallbackTest());
-       // jdkFutureTest(future, future2);
-       // System.out.println("回调展示");
-        //callBackFuture(future, future2,listenableFutureDemo);
+        jdkFutureTest(future, future2);
+        System.out.println("回调展示");
+        callBackFuture(future, future2,listenableFutureDemo);
 
     }
 
@@ -65,8 +65,15 @@ public class ListenableFutureDemo {
     private static void callBackFuture(ListenableFuture<String> future, ListenableFuture<String> future2, ListenableFutureDemo listenableFutureDemo ){
         //有个失败全局失败
        // final ListenableFuture allFutures = Futures.allAsList(future, future2);
-        Futures.addCallback(future, listenableFutureDemo.new FutureCallbackTest());
+        List<ListenableFuture<String>> futuresList = Lists.newArrayList();
+        futuresList.add(future2);
+        futuresList.add(future);
         Futures.addCallback(future2, listenableFutureDemo.new FutureCallbackTest());
+        Futures.addCallback(future, listenableFutureDemo.new FutureCallbackTest());
+
+        ListenableFuture<List<String>> successLsit =  Futures.successfulAsList();
+
+
     }
 
     /**
@@ -114,6 +121,10 @@ public class ListenableFutureDemo {
             }
             return "SUCCESS";
         }
+
+        public int getVersion(){
+            return this.version;
+        }
     }
 
     /**
@@ -123,8 +134,10 @@ public class ListenableFutureDemo {
 
         private long startTime;
         private long endTime;
-        public AsyncExecFuture(Callable<String> callable) {
+        private AsyncExecCallable ownerCallable;
+        public AsyncExecFuture(AsyncExecCallable callable) {
             super(callable);
+            ownerCallable = callable;
         }
 
         @Override
@@ -143,6 +156,18 @@ public class ListenableFutureDemo {
                 e.printStackTrace();
             }
             super.run();
+        }
+
+
+        public String getCustom(long timeout, TimeUnit unit)
+                throws TaskBusinessException {
+            try{
+                return super.get(timeout,unit);
+            }catch (Exception e){
+                throw   new TaskBusinessException(String.valueOf(ownerCallable.getVersion()),e.getMessage(),e.getCause());
+            }
+
+
         }
     }
 }
