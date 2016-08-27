@@ -1,21 +1,22 @@
-package com.wanying.study.thread;
+package com.wanying.study.guava;
 
 import com.google.common.collect.Lists;
 import com.google.common.util.concurrent.*;
 import com.wanying.study.exception.TaskBusinessException;
-import com.wanying.study.guava.vo.Person;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.*;
 
-import static org.osgi.util.measurement.Unit.V;
-
 /**
  * Created by wychenlong on 2016/8/18.
  */
 public class ListenableFutureDemo {
+    protected static final Logger logger = LoggerFactory.getLogger(ListenableFutureDemo.class);
     public static void main(String args[]) {
+
         ListenableFutureDemo listenableFutureDemo = new ListenableFutureDemo();
         ListeningExecutorService executor = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(2));
         AsyncExecCallable asyncExecCallable1 = listenableFutureDemo.new AsyncExecCallable(1,"test1");
@@ -23,7 +24,7 @@ public class ListenableFutureDemo {
         final ListenableFuture<String> future2 = executor.submit(listenableFutureDemo.new AsyncExecCallable(21,"test2"));
 
         jdkFutureTest(future, future2);
-        System.out.println("回调展示");
+        logger.info("回调展示");
         callBackFuture(future, future2,listenableFutureDemo);
 
     }
@@ -43,17 +44,17 @@ public class ListenableFutureDemo {
         ListenableFuture<List<String>> futureAll = Futures.successfulAsList(futures);
         // Futures.allAsList(futures) 一个失败全部失败或者取消
         try {
-            System.out.println("无回调"+Arrays.toString(futureAll.get().toArray()));
+            logger.info("无回调"+Arrays.toString(futureAll.get().toArray()));
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }catch (Exception e){
             if(e instanceof TaskBusinessException){
-                e.printStackTrace();
+                logger.error("task error",e);
             }
         }
-        System.out.println("exit..");
+        logger.info("exit..");
     }
 
     /**
@@ -89,14 +90,14 @@ public class ListenableFutureDemo {
     private class FutureCallbackTest implements FutureCallback{
 
         public void onSuccess(Object result) {
-            System.out.println(result.getClass());
-            System.out.printf("success with: %s%n", result);
+            logger.info(result.getClass().getName());
+            logger.info("success with: {}", result);
         }
 
         public void onFailure(Throwable thrown) {
             if (thrown instanceof TaskBusinessException) {
                 TaskBusinessException taskBusinessException = (TaskBusinessException) thrown;
-                System.out.printf("onFailure  thread code= %s%n ", taskBusinessException.getCode());
+                logger.info("onFailure  thread code {}", taskBusinessException.getCode());
             }
 
         }
@@ -144,7 +145,7 @@ public class ListenableFutureDemo {
         protected void done() {
             endTime = System.currentTimeMillis(); // 记录一下时间点，Future在cancel调用，正常完成，或者运行出异常都会回调该方法
             long costTime = endTime -startTime;
-            System.out.printf("costTime with: %s%n", costTime);
+            logger.info("costTime with: {}", costTime);
         }
 
         @Override
