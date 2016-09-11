@@ -1,4 +1,4 @@
-package com.wanying.study.thread;
+package com.wanying.study.thread.custom;
 
 import com.google.common.collect.Lists;
 import com.wanying.study.exception.TaskBusinessException;

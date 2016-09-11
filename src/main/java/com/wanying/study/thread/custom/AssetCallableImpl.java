@@ -1,4 +1,4 @@
-package com.wanying.study.thread;
+package com.wanying.study.thread.custom;
 
 /**
  * Created by wychenlong on 2016/8/21.

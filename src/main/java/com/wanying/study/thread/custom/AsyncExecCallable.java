@@ -1,4 +1,4 @@
-package com.wanying.study.thread;
+package com.wanying.study.thread.custom;
 
 
 import java.util.concurrent.Callable;

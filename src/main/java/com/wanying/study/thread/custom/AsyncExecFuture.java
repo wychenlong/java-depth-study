@@ -1,12 +1,10 @@
-package com.wanying.study.thread;
+package com.wanying.study.thread.custom;
 
 import com.google.common.base.Objects;
 import com.wanying.study.exception.TaskBusinessException;
 
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 /**
  * Created by wychenlong on 2016/8/21.
