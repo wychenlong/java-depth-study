@@ -1,6 +1,8 @@
 package com.wanying.study.javolution;
 
 import javolution.util.FastTable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 
@@ -18,6 +20,8 @@ import javolution.util.FastTable;
  * 
  */
 public class FastTableTest {
+
+	private static final Logger logger = LoggerFactory.getLogger(FastTableTest.class);
 	private static int capcatity = 10000000;
 
 	public static void main(String args[]) {
@@ -47,7 +51,7 @@ public class FastTableTest {
 			table.add(String.valueOf(i));
 		}
 		long end = System.currentTimeMillis();
-		System.out.println("fasttable insert string cost time = " + (end - start) + " ms");
-		System.out.println(table.get(10));
+		logger.info("fasttable insert string cost time = " + (end - start) + " ms");
+		logger.info(table.get(10));
 	}
 }

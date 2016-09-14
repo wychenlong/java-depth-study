@@ -1,5 +1,8 @@
 package com.wanying.study.javolution;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +23,7 @@ import java.util.List;
  */
 public class ListTest {
 
+	private static final Logger logger = LoggerFactory.getLogger(ListTest.class);
 	private static int capcatity = 1000000000;
 
 	public static void main(String args[]) {
@@ -40,7 +44,7 @@ public class ListTest {
 			list.add(String.valueOf(i));
 		}
 		long end = System.currentTimeMillis();
-		System.out.println("jdk list insert string cost time = " + (end - start) + " ms");
+		logger.info("jdk list insert string cost time = " + (end - start) + " ms");
 
 	}
 
@@ -51,7 +55,7 @@ public class ListTest {
 			list.add(i);
 		}
 		long end = System.currentTimeMillis();
-		System.out.println("jdk list insert  int cost time = " + (end - start) + " ms");
+		logger.info("jdk list insert  int cost time = " + (end - start) + " ms");
 	}
 
 	private static void query(List<String> list) {
@@ -60,7 +64,7 @@ public class ListTest {
 			list.get(i);
 		}
 		long end1 = System.currentTimeMillis();
-		System.out.println("jdk list get string cost time = " + (end1 - start1) + " ms");
+		logger.info("jdk list get string cost time = " + (end1 - start1) + " ms");
 	}
 
 }
