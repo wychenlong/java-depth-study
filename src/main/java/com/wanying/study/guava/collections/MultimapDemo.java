@@ -19,7 +19,7 @@ public class MultimapDemo {
     /**
      *  multimap 相当于 Map<String,List<String>> stringListMap = Maps.newHashMap();
      */
-    public static void testMultiMap() {
+    private static void testMultiMap() {
         Multimap<String, String> multimap = ArrayListMultimap.create();
         for (int i = 0; i < 5; i++) {
             multimap.put("A", i + "");
