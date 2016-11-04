@@ -22,11 +22,12 @@ import org.slf4j.LoggerFactory;
 public class FastTableTest {
 
 	private static final Logger logger = LoggerFactory.getLogger(FastTableTest.class);
-	private static int capcatity = 10000000;
+	private static int capcatity = 100000000;
 
 	public static void main(String args[]) {
+		//-XX:-UseGCOverheadLimit
 		addString();
-		addSource();
+		//addSource();
 		try {
 			Thread.sleep(100000l);
 		} catch (InterruptedException e) {
@@ -48,7 +49,7 @@ public class FastTableTest {
 		FastTable<String> table = new FastTable<String>();
 		long start = System.currentTimeMillis();
 		for (int i = 0; i < capcatity; i++) {
-			table.add(String.valueOf(i));
+			table.add(String.valueOf("360008956235426"+i));
 		}
 		long end = System.currentTimeMillis();
 		logger.info("fasttable insert string cost time = " + (end - start) + " ms");
