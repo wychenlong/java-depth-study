@@ -27,6 +27,8 @@ public class ListTest {
 	private static int capcatity = 1000000000;
 
 	public static void main(String args[]) {
+		String str = "370000100000000800170941";
+		System.out.println(str.getBytes().length);
 		addString();
 		// addInt();
 		try {
@@ -41,7 +43,7 @@ public class ListTest {
 		List<String> list = new ArrayList<String>();
 		long start = System.currentTimeMillis();
 		for (int i = 0; i < capcatity; i++) {
-			list.add(String.valueOf(i));
+			list.add(String.valueOf("360008956235426"+i));
 		}
 		long end = System.currentTimeMillis();
 		logger.info("jdk list insert string cost time = " + (end - start) + " ms");

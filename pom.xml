@@ -48,9 +48,15 @@
 				<scope>test</scope>
 			</dependency>
 			<dependency>
+<<<<<<< HEAD
 				<groupId>c3p0</groupId>
 				<artifactId>c3p0</artifactId>
 				<version>0.9.0.2</version>
+=======
+				<groupId>io.netty</groupId>
+				<artifactId>netty-all</artifactId>
+				<version>4.0.42.Final</version>
+>>>>>>> origin/master
 			</dependency>
 		</dependencies>
 
@@ -82,8 +88,13 @@
 			<artifactId>javolution-core-java</artifactId>
 		</dependency>
 		<dependency>
+<<<<<<< HEAD
 			<groupId>c3p0</groupId>
 			<artifactId>c3p0</artifactId>
+=======
+			<groupId>io.netty</groupId>
+			<artifactId>netty-all</artifactId>
+>>>>>>> origin/master
 		</dependency>
 	</dependencies>
 	<build>
