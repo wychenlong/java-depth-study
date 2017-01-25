@@ -57,8 +57,8 @@
 				<groupId>io.netty</groupId>
 				<artifactId>netty-all</artifactId>
 				<version>4.0.42.Final</version>
-
 			</dependency>
+
 		</dependencies>
 
 	</dependencyManagement>
@@ -97,6 +97,7 @@
 			<groupId>io.netty</groupId>
 			<artifactId>netty-all</artifactId>
 		</dependency>
+
 	</dependencies>
 	<build>
 		<pluginManagement>

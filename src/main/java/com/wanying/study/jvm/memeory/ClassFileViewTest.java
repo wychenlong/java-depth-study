@@ -2,8 +2,9 @@ package com.wanying.study.jvm.memeory;
 
 /**
  * Created by wychenlong on 2016/12/14.
+ * 主要是用于类文件查看
  */
-public class MemoryTest {
+public class ClassFileViewTest {
 
     private final int SIZE =10;
     private int max = 20;
@@ -25,7 +26,7 @@ public class MemoryTest {
     }
 
     public static void main(String args[]){
-        MemoryTest memoryTest = new MemoryTest();
+        ClassFileViewTest memoryTest = new ClassFileViewTest();
         memoryTest.test();
     }
 }
